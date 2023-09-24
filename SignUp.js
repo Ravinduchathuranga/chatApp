@@ -1,13 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView, StyleSheet } from "react-native";
 
-function SignIn(){
+export function SignUp(){
     const ui=(
         <SafeAreaView style={styles.container}>
             <StatusBar hidden={true}/>
         </SafeAreaView>
     );
-    return ui();
+    return ui;
 }
 
 const styles=StyleSheet.create({
