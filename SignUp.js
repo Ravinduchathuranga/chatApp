@@ -10,7 +10,7 @@ const countries = ['Sri Lanka', 'Australia', 'Japan'];
 export function SignUp() {
 
     const [getImageUri, setImageUri] = useState(require('./assets/chat.png'));
-    
+
     const ui = (
         <SafeAreaView style={styles.contaier}>
             <StatusBar hidden={true} />
