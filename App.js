@@ -13,10 +13,10 @@ function App() {
   const ui = (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name='SignUp' component={SignUp}/>
-      <Stack.Screen name='SignIn' component={SignIn} />
-        <Stack.Screen name='Home' component={Home} />
-        <Stack.Screen name='Chat' component={Chat} />
+        <Stack.Screen name='SignUp' component={SignUp} options= {{ title: 'Create An Account'}} />
+        <Stack.Screen name='SignIn' component={SignIn} options={{title:'Sign In'}} />
+        <Stack.Screen name='Home' component={Home} options={{title:'Home'}}/>
+        <Stack.Screen name='Chat' component={Chat} options={{title:'Chat'}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

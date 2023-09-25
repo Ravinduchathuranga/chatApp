@@ -1,37 +1,29 @@
 import { StatusBar } from "expo-status-bar";
+import React, { useState } from "react";
 import { View, SafeAreaView, StyleSheet, Text, TextInput, Button, Image, Alert } from "react-native";
 import SelectDropdown from "react-native-select-dropdown";
 import * as ImagePicker from 'expo-image-picker';
-import { useState } from "react";
 
 const countries = ['Sri Lanka', 'Australia', 'Japan'];
 
-
 export function SignUp() {
-
     const [getImageUri, setImageUri] = useState(require('./assets/chat.png'));
 
     const ui = (
-        <SafeAreaView style={styles.contaier}>
+        <SafeAreaView style={styles.container}>
             <StatusBar hidden={true} />
-            <Image source={getImageUri} />
+            <Image source={getImageUri} style={styles.image} />
             <View>
-                <Button title="Select Profile Picture" onPress={
-                    async () => {
-
-                        const result = await ImagePicker.launchImageLibraryAsync();
-
-                        if (!result.canceled) {
-                            setImageUri(
-                                {
-                                    uri: result.assets[0].uri,
-                                });
-
-                        } else {
-                            Alert.alert("Message", "Please Select Image");
-                        }
-                    }}
-                />
+                <Button title="Select Profile Picture" onPress={async () => {
+                    const result = await ImagePicker.launchImageLibraryAsync();
+                    if (!result.canceled) {
+                        setImageUri({
+                            uri: result.assets[0].uri,
+                        });
+                    } else {
+                        Alert.alert("Message", "Please Select Image");
+                    }
+                }} />
             </View>
             <View style={styles.view1}>
                 <Text>First Name</Text>
@@ -51,25 +43,22 @@ export function SignUp() {
             </View>
             <View style={styles.view1}>
                 <Text>Country</Text>
-                <SelectDropdown data={countries}
-                    buttonStyle={{
-                        width: "100%",
-                        borderRadius: 6,
-                    }}
-                />
+                <SelectDropdown data={countries} buttonStyle={{
+                    width: "100%",
+                    borderRadius: 6,
+                }} />
             </View>
             <View>
                 <Button title="Sign Up" />
             </View>
-
         </SafeAreaView>
     );
+
     return ui;
 }
 
 const styles = StyleSheet.create({
-
-    contaier: {
+    container: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
@@ -96,5 +85,9 @@ const styles = StyleSheet.create({
     btn: {
         marginTop: 10,
     },
-
+    image: {
+        width: 100, // Set the width and height to control the image size
+        height: 100, // Set the width and height to control the image size
+        marginBottom: 10,
+    },
 });
